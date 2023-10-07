@@ -10,26 +10,36 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
 
-    signIn(email, password)
-      .then((result) => {
-        console.log(result.user);
-        toast.success("Login successful!", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Login failed. Please check your credentials and try again.", {
-          position: toast.POSITION.TOP_CENTER,
-        });
+    try {
+      // Sign in user
+      const result = await signIn(email, password);
+      console.log(result.user);
+      toast.success("Login successful!", {
+        position: toast.POSITION.TOP_CENTER,
       });
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      if (error.code === "auth/wrong-password") {
+        toast.error("Wrong password. Please try again.", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else if (error.code === "auth/user-not-found") {
+        toast.error("Email doesn't match any account. Please check your email and try again.", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else {
+        console.error(error);
+        toast.error("Login failed. Please try again later.", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    }
   };
 
   return (
