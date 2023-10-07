@@ -8,6 +8,10 @@ import Register from "../pages/Register/Register";
 import Details from "../pages/Details/Details";
 import AboutUs from "../pages/Home/AboutUs";
 import PrivateRoute from "./PrivateRout/PrivateRoute";
+import ContactUs from "../pages/ContactUs";
+import Ratings from "../pages/Ratings";
+import Reviews from "../components/Reviews";
+
 
 const router = createBrowserRouter([
     {
@@ -17,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+            },
+            {
+                path: '/contactus',
+                element: <PrivateRoute><ContactUs></ContactUs></PrivateRoute>
             },
             {
                 path: '/services',
@@ -30,11 +38,18 @@ const router = createBrowserRouter([
                     const res = await fetch('/services.json');
                     const services = await res.json();
                     return services;}
-  
             },
             {
                 path: '/review',
                 element: <Review></Review>
+            },
+            {
+                path: '/reviews',
+                element: <Reviews></Reviews>
+            },
+            {
+                path: '/ratings',
+                element: <PrivateRoute><Ratings></Ratings></PrivateRoute>
             },
             {
                 path: '/aboutus',
