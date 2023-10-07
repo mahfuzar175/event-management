@@ -1,5 +1,7 @@
 import { data } from "autoprefixer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ServiceCard from "./ServiceCard/ServiceCard";
 
 const Services = () => {
 
@@ -13,7 +15,15 @@ const Services = () => {
 
     return (
         <div>
-            <h2 className="mt-6 mb-4 text-4xl font-bold text-center">Our Services: {services.length}</h2>
+            <h2 className="mt-8 mb-6 text-4xl font-bold text-center">Our Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4">
+            {
+                services.map(service => <ServiceCard 
+                    key={service.id}
+                    services ={service}
+                    ></ServiceCard>)
+            }
+            </div>
         </div>
     );
 };
