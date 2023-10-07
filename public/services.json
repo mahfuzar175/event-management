@@ -1,0 +1,50 @@
+[
+    {
+      "id": 1,
+      "name": "Weddings",
+      "image": "link_to_wedding_image.jpg",
+      "price": 40000,
+      "short_description": "Tailored wedding planning services for your special day. Expanded Description: Our wedding planning services are meticulously designed to make your special day truly unforgettable. From venue selection and decor arrangements to catering and entertainment, we handle every detail with care and creativity. Our team of experienced professionals collaborates closely with you to bring your dream wedding to life, ensuring a seamless and magical experience for you and your guests.",
+      "button_text": "Explore Wedding Services"
+    },
+    {
+      "id": 2,
+      "name": "Birthday Parties",
+      "image": "link_to_birthday_party_image.jpg",
+      "price": "Exciting birthday party packages suitable for all ages. Expanded Description: Celebrate another year of life's journey with our exciting birthday party packages designed to delight guests of all ages. Whether you're planning a whimsical children's party, a vibrant teenage bash, or a sophisticated adult soirée, our creative themes, delicious catering, and engaging activities ensure a memorable experience for everyone. From thrilling entertainment to delectable cakes, we take care of every detail, allowing you to relax and enjoy the festivities. Let us bring your birthday visions to life, creating a day filled with laughter, happiness, and wonderful surprises.",
+      "short_description": 10000,
+      "button_text": "Explore Birthday Packages"
+    },
+    {
+      "id": 3,
+      "name": "Anniversaries",
+      "image": "link_to_anniversary_image.jpg",
+      "price": 150000,
+      "short_description": "Celebrate your special milestones with our anniversary services. Expanded Description: Cherish the love that has stood the test of time with our heartfelt anniversary services. Whether you're commemorating a milestone year or simply celebrating the enduring bond between you and your partner, our team crafts elegant and meaningful anniversary events. From intimate candlelit dinners to lavish parties surrounded by friends and family, we curate romantic atmospheres and customize every element to honor your unique journey together. Let us create an unforgettable anniversary celebration, rekindling the warmth and romance that first brought you together.",
+      "button_text": "Explore Anniversary Services"
+    },
+    {
+      "id": 4,
+      "name": "Engagement Parties",
+      "image": "link_to_engagement_image.jpg",
+      "price": 150000,
+      "short_description": "Your engagement marks the beginning of a new chapter in your life, and it deserves a celebration as special as your love story. Our engagement party planning services are designed to capture the essence of your relationship and the excitement of your upcoming union. We assist you in crafting a memorable event that sets the tone for your wedding journey. From venue selection to thematic decor and entertainment, we pay attention to every detail, allowing you and your guests to revel in the joyous atmosphere. Let us create the perfect ambiance for your engagement party, making it an unforgettable occasion for everyone involved.",
+      "button_text": "Explore Engagement Services"
+    },
+    {
+      "id": 5,
+      "name": "Retirement Parties",
+      "image": "link_to_retirement_image.jpg",
+      "price": 180000,
+      "short_description": "Retirement is a significant milestone, marking years of hard work and dedication. Our retirement party planning services are dedicated to honoring the retiree and celebrating their achievements in a joyous and meaningful way. Whether it's a coworker, a friend, or a family member, we specialize in organizing retirement parties that reflect the individual's personality and accomplishments. From heartfelt speeches to customized decorations and entertainment, we create an atmosphere of appreciation and camaraderie. Let us handle the event logistics, allowing you to focus on expressing your gratitude and best wishes for the retiree's future endeavors.",
+      "button_text": "Explore Retirement Services"
+    },
+    {
+      "id": 6,
+      "name": "Baby Shower",
+      "image": "link_to_retirement_image.jpg",
+      "price": 12000,
+      "short_description": "Embrace the joy of new beginnings with our enchanting Baby Shower services. Tailored for expecting parents, our celebrations are filled with love, laughter, and delightful surprises. From charming themes to adorable decorations, we create magical moments that celebrate the arrival of your little one. Let us craft a memorable event where cherished memories are born. Explore the wonder of parenthood with our Baby Shower services!",
+      "button_text": "Explore Baby Shower Services"
+    }
+  ]

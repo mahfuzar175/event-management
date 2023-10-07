@@ -1,8 +1,24 @@
+import { Link, NavLink } from "react-router-dom";
+import userDefaultPic from '../../src/assets/user.png'
+
 const Navbar = () => {
   const navLinks = (
     <>
-      <li><a>Item 1</a></li>
-      <li><a>Item 3</a></li>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/services">Services</NavLink>
+      </li>
+      <li>
+        <NavLink to="/review">Reviews</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Register</NavLink>
+      </li>
     </>
   );
   return (
@@ -37,12 +53,17 @@ const Navbar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img src={userDefaultPic} />
+          </div>
+        </label>
+        <Link to="/login">
+          <button className="btn btn-ghost">Login</button>
+        </Link>
       </div>
     </div>
   );
