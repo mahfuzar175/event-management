@@ -1,11 +1,11 @@
-import { data } from "autoprefixer";
+
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import ServiceCard from "./ServiceCard/ServiceCard";
 
 const Services = () => {
 
     const [services, setServices] = useState([]);
+    console.log(services);
 
     useEffect(() =>{
         fetch('services.json')

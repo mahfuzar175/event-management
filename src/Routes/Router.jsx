@@ -5,6 +5,7 @@ import Services from "../pages/Home/Services";
 import Review from "../pages/Home/Review";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Details from "../pages/Details/Details";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,15 @@ const router = createBrowserRouter([
                 path: '/services',
                 element: <Services></Services>,
                 
+            },
+            {
+                path: '/services/:id',
+                element: <Details></Details>,
+                loader: async () => {
+                    const res = await fetch('/services.json');
+                    const services = await res.json();
+                    return services;}
+  
             },
             {
                 path: '/review',
