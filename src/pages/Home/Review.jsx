@@ -3,7 +3,7 @@ import customersPic2 from "../../assets/member2.png";
 import customersPic3 from "../../assets/member3.png";
 const Review = () => {
   return (
-    <div className="flex flex-col justify-center items-center mt-4">
+    <div className="flex flex-col justify-center items-center mt-4 mb-8">
       <h2 className="mt-8 mb-6 text-4xl font-bold text-center">
         Coustomers Review
       </h2>
