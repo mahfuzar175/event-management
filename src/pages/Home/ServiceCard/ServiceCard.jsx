@@ -20,7 +20,7 @@ const ServiceCard = ({ services }) => {
           <div className="card-actions">
           <div className="p-2 text-lg font-bold">$ {price}</div>
           </div>
-          <Link to={`/services/${id}`}><button className="btn btn-ghost normal-case rounded-md bg-green-600 font-bold">{button_text}</button></Link>
+          <Link to={`/services/${id}`}><button className="btn btn-secondary normal-case rounded-md text-base font-bold">{button_text}</button></Link>
         </div>
       </div>
     </div>

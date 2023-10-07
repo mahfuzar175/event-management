@@ -14,6 +14,9 @@ const Navbar = () => {
         <NavLink to="/review">Reviews</NavLink>
       </li>
       <li>
+        <NavLink to="/aboutus">About Us</NavLink>
+      </li>
+      <li>
         <NavLink to="/login">Login</NavLink>
       </li>
       <li>
@@ -49,7 +52,7 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-3xl font-bold">
-          FestiveFiestaHub
+          FestiveHub
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
