@@ -1,35 +1,40 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = () => {
-
-  const {signIn} = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleLogin = e =>{
-      e.preventDefault();
-      console.log(e.currentTarget);
-      const form = new FormData(e.currentTarget);
-      const email = form.get('email');
-      const password = form.get('password');
-      console.log(email, password);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
 
-      signIn(email, password)
+    signIn(email, password)
       .then((result) => {
         console.log(result.user);
-
-        // navigate after login
-        navigate(location?.state ? location.state: '/');
-
-      }).catch((err) => {
+        toast.success("Login successful!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => {
         console.log(err);
+        toast.error("Login failed. Please check your credentials and try again.", {
+          position: toast.POSITION.TOP_CENTER,
+        });
       });
-  }
+  };
 
   return (
     <div className="mb-8 p-4">
+      <ToastContainer />
       <h1 className="text-5xl font-bold text-center">Please Login!</h1>
       <form onSubmit={handleLogin} className="md:w-2/4 lg:w-1/3 mx-auto mt-4">
         <div className="form-control">
@@ -55,11 +60,6 @@ const Login = () => {
             className="input input-bordered"
             required
           />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">
-              Forgot password?
-            </a>
-          </label>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary normal-case text-base font-semibold">Login</button>

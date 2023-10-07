@@ -1,33 +1,39 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
 
-  const {createUser} = useContext(AuthContext);
-  
-  const handleRegister = e =>{
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    const name = form.get('name');
-    const photo = form.get('photo');
-    const email = form.get('email');
-    const password = form.get('password');
-    console.log(name, photo, email, password);
+    const name = form.get("name");
+    const photo = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log(name, email, photo, password);
 
-
-    // create user
-    createUser(email, password)
-    .then((result) => {
+    try {
+      // create user
+      const result = await createUser(email, password);
       console.log(result.user);
-    }).catch((err) => {
-      console.log(err);
-    });
-}
+      toast.success("Registration successful!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (error) {
+      console.error(error);
+      toast.error("Registration failed. Please try again later.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
 
   return (
     <div>
+      <ToastContainer />
       <div className="mb-8 p-4">
         <h1 className="text-5xl font-bold text-center">Register now!</h1>
         <form onSubmit={handleRegister} className="md:w-2/4 lg:w-1/3 mx-auto mt-4">
@@ -78,11 +84,6 @@ const Register = () => {
               className="input input-bordered"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary normal-case text-base font-semibold">
