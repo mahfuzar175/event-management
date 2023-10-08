@@ -1,44 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const auth = getAuth();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const email = form.get("email");
-    const password = form.get("password");
-
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
     try {
-      // Sign in user
-      const result = await signIn(email, password);
+      // Sign in user with Google
+      const result = await signInWithPopup(auth, provider);
       console.log(result.user);
       toast.success("Login successful!", {
         position: toast.POSITION.TOP_CENTER,
       });
       navigate(location?.state ? location.state : "/");
     } catch (error) {
-      if (error.code === "auth/wrong-password") {
-        toast.error("Wrong password. Please try again.", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      } else if (error.code === "auth/user-not-found") {
-        toast.error("Email doesn't match any account. Please check your email and try again.", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      } else {
-        console.error(error);
-        toast.error("Login failed. Please try again later.", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      }
+      console.error(error);
+      toast.error("Google Sign-In failed. Please try again later.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
+
+  const handleEmailPasswordLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Sign in user with email and password
+      await signIn(email, password);
+      toast.success("Login successful!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      console.error(error);
+      toast.error("Login failed. Please check your email and password.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 
@@ -46,7 +54,10 @@ const Login = () => {
     <div className="mb-8 p-4">
       <ToastContainer />
       <h1 className="text-5xl font-bold text-center">Please Login!</h1>
-      <form onSubmit={handleLogin} className="md:w-2/4 lg:w-1/3 mx-auto mt-4">
+      <form
+        onSubmit={handleEmailPasswordLogin}
+        className="md:w-2/4 lg:w-1/3 mx-auto mt-4"
+      >
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -57,6 +68,8 @@ const Login = () => {
             placeholder="email"
             className="input input-bordered"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -69,13 +82,28 @@ const Login = () => {
             placeholder="password"
             className="input input-bordered"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary normal-case text-base font-semibold">Login</button>
+          <button className="btn btn-primary normal-case text-base font-semibold">
+            Continue with email/password
+          </button>
         </div>
       </form>
-      <p className="text-center mt-4">Don't have an account <Link className="text-blue-700 font-medium underline" to='/register'>Register</Link></p>
+      <div className="mt-4 mb-2 text-center">Or,</div>
+      <div className="flex justify-center items-center">
+        <button className="btn btn-outline normal-case" onClick={handleGoogleLogin}>
+        <FaGoogle></FaGoogle>Login with Google
+        </button>
+      </div>
+      <p className="text-center mt-4">
+        Don't have an account? Please{" "}
+        <Link className="text-blue-700 font-medium underline" to="/register">
+          Register
+        </Link>
+      </p>
     </div>
   );
 };
