@@ -1,14 +1,14 @@
 
 const AboutUs = () => {
   return (
-    <section className="mt-4 py-16">
+    <section className="mt-2">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img
+          <div data-aos="fade-left" data-aos-duration="2000"><img
             src="https://i.ibb.co/pnrs2Vf/Getty-Images-18293907711-162737a0b4264ea6b180ee2b31bb518a.jpg"
             className="max-w-sm rounded-lg shadow-2xl"
-          />
-          <div>
+          /></div>
+          <div data-aos="fade-right" data-aos-duration="2000">
           <h2 className="text-4xl font-bold mb-6">About Us</h2>
             <p className="text-gray-700 mb-8">
               Welcome to <span className="font-bold">FestiveHub</span>, where we

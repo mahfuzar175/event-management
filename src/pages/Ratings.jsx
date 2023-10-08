@@ -7,8 +7,9 @@ const Ratings = () => {
   return (
     <div>
         <Reviews></Reviews>
+      <div className="flex flex-col justify-center items-center">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="4000" className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img src={customerpic4} alt="picture" className="rounded-xl" />
           </figure>
@@ -46,7 +47,7 @@ const Ratings = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="5000" className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img src={customerpic5} alt="picture" className="rounded-xl" />
           </figure>
@@ -84,7 +85,7 @@ const Ratings = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="6000" className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img src={customerpic6} alt="picture" className="rounded-xl" />
           </figure>
@@ -122,6 +123,7 @@ const Ratings = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

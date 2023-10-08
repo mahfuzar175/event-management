@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
       </nav>
       <aside>
-        <p>Copyright © 2023 - All right reserved by Festive Company Ltd.</p>
+        <p>Copyright © 2023 - All right reserved by FestiveHub Company Ltd.</p>
       </aside>
     </footer>
   );

@@ -1,40 +1,57 @@
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import userDefaultPic from '../../src/assets/user.png'
-import { useContext } from "react";
+import userDefaultPic from '../../src/assets/user.png';
 import { AuthContext } from "../AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const userName = user ? user.displayName : "";
+  const userProfilePic = user ? user.photoURL : userDefaultPic;
 
-  const {user, logOut} = useContext(AuthContext);
-
-  const handleSignOut = () =>{
+  const handleSignOut = () => {
+    setLoggingOut(true);
     logOut()
-    .then((result) => {
-      console.log(result.user);
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
+      .then(() => {
+        console.log("User signed out successfully");
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error.message);
+      })
+      .finally(() => {
+        setLoggingOut(false);
+      });
+  };
 
   const navLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" exact activeClassName="font-bold">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/services">Services</NavLink>
+        <NavLink to="/services" activeClassName="font-bold">
+          Services
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/review">Reviews</NavLink>
+        <NavLink to="/review" activeClassName="font-bold">
+          Reviews
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/aboutus">About Us</NavLink>
+        <NavLink to="/aboutus" activeClassName="font-bold">
+          About Us
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/login" activeClassName="font-bold">
+          Login
+        </NavLink>
       </li>
     </>
-  );
+  );<br />
   return (
     <div className="navbar bg-base-100 p-6 ">
       <div className="navbar-start">
@@ -72,20 +89,25 @@ const Navbar = () => {
       <div className="navbar-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src={userDefaultPic} />
+            <img src={userProfilePic} alt={`${userName}'s profile`} />
           </div>
+          <span>{userName}</span>
         </label>
-        {
-          user ?
-          <button onClick={handleSignOut} className="btn btn-ghost">Sign Out</button>
-          :
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className={`btn btn-ghost ${loggingOut ? 'loading' : ''}`}
+            disabled={loggingOut}
+          >
+            Sign Out
+          </button>
+        ) : (
           <Link to="/login">
-          <button className="btn btn-ghost">Login</button>
+            <button className="btn btn-ghost">Login</button>
           </Link>
-        }
+        )}
       </div>
     </div>
   );
 };
-
 export default Navbar;

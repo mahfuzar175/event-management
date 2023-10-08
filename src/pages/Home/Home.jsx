@@ -4,14 +4,14 @@ import Review from "./Review";
 import Services from "./Services";
 
 const Home = () => {
-    return (
-        <div>
-            <Banner></Banner>
-            <Services></Services>
-            <Review></Review>
-            <AboutUs></AboutUs>
-        </div>
-    );
+  return (
+    <div>
+      <div><Banner></Banner></div>
+      <div><Services></Services></div>
+      <div><Review></Review></div>
+      <div><AboutUs></AboutUs></div>
+    </div>
+  );
 };
 
 export default Home;

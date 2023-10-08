@@ -5,7 +5,7 @@ const Reviews = () => {
   return (
     <div className="flex flex-col justify-center items-center mt-4 mb-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="1000" className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img src={customersPic} alt="picture" className="rounded-xl" />
           </figure>
@@ -43,7 +43,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="2000" className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img src={customersPic2} alt="picture" className="rounded-xl" />
           </figure>
@@ -81,7 +81,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-in-up" data-aos-duration="3000" className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <img src={customersPic3} alt="picture" className="rounded-xl" />
           </figure>

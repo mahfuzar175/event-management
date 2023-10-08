@@ -4,7 +4,9 @@ const ServiceCard = ({ services }) => {
   const { id, name, image, price, short_description, button_text } = services;
 
   return (
-    <div>
+    <div data-aos="flip-left"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="3000">
       <div className="card bg-base-100 shadow-xl">
         <figure>
           <img className="w-full h-[150px]"

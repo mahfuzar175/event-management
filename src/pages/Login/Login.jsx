@@ -95,7 +95,7 @@ const Login = () => {
       <div className="mt-4 mb-2 text-center">Or,</div>
       <div className="flex justify-center items-center">
         <button className="btn btn-outline normal-case" onClick={handleGoogleLogin}>
-        <FaGoogle></FaGoogle>Login with Google
+          <FaGoogle /> Login with Google
         </button>
       </div>
       <p className="text-center mt-4">
