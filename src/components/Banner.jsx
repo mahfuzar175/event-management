@@ -17,9 +17,7 @@ const Banner = () => {
             <span>FestivHub</span>
           </h1>
           <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          Your premier event management platform, connecting you with top-notch vendors and personalized solutions for seamless and unforgettable events. Plan your perfect gathering with us!
           </p>
           <div
             data-aos="fade-left"
