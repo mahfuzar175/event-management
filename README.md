@@ -1,11 +1,10 @@
 # FestiveHub Event Management Website
 
-## [ Live Link]
+## [Live Link](https://b8a9-event-management-54150.web.app/)
 
-Click here for the private repo: [https://b8a9-event-management-54150.web.app/](https://b8a9-event-management-54150.web.app/)
+Click here for the live link: [https://b8a9-event-management-54150.web.app/](https://b8a9-event-management-54150.web.app/)
 
 
-FestiveHub is an event management website designed to streamline your event planning experience. With FestiveHub, you can organize events effortlessly and efficiently.
 
 ## Key Features
 
@@ -32,3 +31,5 @@ FestiveHub is an event management website designed to streamline your event plan
   - Allow users to log in using their Gmail accounts.
   - Implement Google's OAuth authentication for seamless login.
   - Simplified registration and login process for enhanced user experience.
+
+  FestiveHub is an event management website designed to streamline your event planning experience. With FestiveHub, you can organize events effortlessly and efficiently.
