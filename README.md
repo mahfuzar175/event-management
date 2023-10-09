@@ -1,6 +1,6 @@
 # FestiveHub Event Management Website
 
-## [ Live Link](https://b8a9-event-management-54150.web.app/)
+## [ Live Link]
 
 Click here for the private repo: [https://b8a9-event-management-54150.web.app/](https://b8a9-event-management-54150.web.app/)
 
