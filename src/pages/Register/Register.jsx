@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -32,6 +33,17 @@ const Register = () => {
       // create user
       const result = await createUser(email, password);
       console.log(result.user);
+
+      // update profile
+      updateProfile(result.user, {
+        displayName: name,
+        photoURL: photo
+      } )
+      .then(() => console.log('profile updated'))
+      .catch((err) => {
+        console.log(err);
+      });
+
       toast.success("Registration successful!", {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -48,7 +60,10 @@ const Register = () => {
       <ToastContainer />
       <div className="mb-8 p-4">
         <h1 className="text-5xl font-bold text-center">Register now!</h1>
-        <form onSubmit={handleRegister} className="md:w-2/4 lg:w-1/3 mx-auto mt-4">
+        <form
+          onSubmit={handleRegister}
+          className="md:w-2/4 lg:w-1/3 mx-auto mt-4"
+        >
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -66,11 +81,12 @@ const Register = () => {
               <span className="label-text">Image URL</span>
             </label>
             <input
-              type="text"
+              type="url"
               name="photo"
               placeholder="URL"
               className="input input-bordered"
               required
+              id=""
             />
           </div>
           <div className="form-control">

@@ -14,7 +14,7 @@ const Banner = () => {
         <div className="max-w-md">
           <h1 className="mb-5 text-2xl lg:text-5xl font-bold">
             Welcome to our <br />
-            <span>FestivHub</span>
+            <span>FestiveHub</span>
           </h1>
           <p className="mb-5">
           Your premier event management platform, connecting you with top-notch vendors and personalized solutions for seamless and unforgettable events. Plan your perfect gathering with us!

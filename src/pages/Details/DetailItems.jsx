@@ -4,7 +4,7 @@ const DetailItems = ({ item }) => {
   return (
     <div>
       <div className="w-full mx-auto mb-5 p-2">
-        <img className="rounded-t-md" src={image} alt="" />
+        <img className="rounded-t-md w-full" src={image} alt="" />
         <div>
           <h2 className="card-title text-4xl font-bold">{name}</h2>
           <p className="text-lg">

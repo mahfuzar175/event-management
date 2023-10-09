@@ -2,32 +2,60 @@ import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import app from "./firebase/firebase.config";
 
+
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
-
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const createUser = (email, password) =>{
+    const createUser = async (email, password, displayName, photoURL) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const updatedUser = {
+                ...userCredential.user,
+                displayName: displayName,
+                photoURL: photoURL
+            };
+            setUser(updatedUser);
+            setLoading(false);
+            return userCredential;
+        } catch (error) {
+            setLoading(false);
+            throw error;
+        }
     }
 
-    const signIn = (email, password) =>{
+    const signIn = async (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            setUser(userCredential.user);
+            setLoading(false);
+            return userCredential;
+        } catch (error) {
+            setLoading(false);
+            throw error;
+        }
     }
 
-    const logOut = () =>{
+    const logOut = async () => {
         setLoading(true);
-        return signOut(auth)
+        try {
+            await signOut(auth);
+            setUser(null);
+        } catch (error) {
+            console.error("Error signing out: ", error.message);
+        } finally {
+            setLoading(false);
+        }
     }
 
-    useEffect(() =>{
-        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
         });
@@ -42,9 +70,8 @@ const AuthProvider = ({children}) => {
         createUser,
         signIn,
         logOut
+    };
 
-
-    }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

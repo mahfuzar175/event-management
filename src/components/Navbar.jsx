@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import userDefaultPic from '../../src/assets/user.png';
+import userDefaultPic from "../../src/assets/user.png";
 import { AuthContext } from "../AuthProvider";
 
 const Navbar = () => {
@@ -51,7 +51,9 @@ const Navbar = () => {
         </NavLink>
       </li>
     </>
-  );<br />
+  );
+  <br />;
+
   return (
     <div className="navbar bg-base-100 p-6 ">
       <div className="navbar-start">
@@ -91,12 +93,14 @@ const Navbar = () => {
           <div className="w-10 rounded-full">
             <img src={userProfilePic} alt={`${userName}'s profile`} />
           </div>
-          <span>{userName}</span>
         </label>
+        <span className="hidden md:inline-block font-semibold ml-1 mr-1">
+          {userName}
+        </span>
         {user ? (
           <button
             onClick={handleSignOut}
-            className={`btn btn-ghost ${loggingOut ? 'loading' : ''}`}
+            className={`btn btn-ghost ${loggingOut ? "loading" : ""}`}
             disabled={loggingOut}
           >
             Sign Out
@@ -110,4 +114,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
