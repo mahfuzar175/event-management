@@ -6,7 +6,7 @@ const Banner = () => {
       className="hero min-h-screen"
       style={{
         backgroundImage:
-          "url(https://i.ibb.co/7RYYcqn/event-manager-using-laptop-banquet-hall.jpg)",
+          "url(https://i.ibb.co/BPxc1ct/checklistfacil-organizacao-de-eventos.jpg)",
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
